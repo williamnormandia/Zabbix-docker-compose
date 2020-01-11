@@ -40,8 +40,8 @@ services:
   user: root
   depends_on:
    - mysql-server
-   - zabbix-java-gateway
-   - zabbix-snmptraps
+#   - zabbix-java-gateway
+#   - zabbix-snmptraps
   networks:
    zbx_net_backend:
      aliases:
