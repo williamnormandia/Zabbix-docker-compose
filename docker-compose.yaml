@@ -30,6 +30,7 @@ services:
     reservations:
       cpus: '0.5'
       memory: 512M
+  restart: always
   env_file:
    - .env_db_mysql
    - .env_srv
@@ -160,6 +161,7 @@ services:
      - zabbix-web-apache-mysql-centos
    zbx_net_frontend:
   stop_grace_period: 10s
+  restart: always
   sysctls:
    - net.core.somaxconn=65535
   labels:
@@ -277,6 +279,7 @@ services:
    - MYSQL_ROOT_PASSWORD
   user: root
   stop_grace_period: 1m
+  restart: always
   networks:
    zbx_net_backend:
     aliases:
