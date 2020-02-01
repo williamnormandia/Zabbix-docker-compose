@@ -177,6 +177,7 @@ services:
  zabbix-agent:
   container_name: ZBX-AGENT
   image: zabbix/zabbix-agent:centos-4.4-latest
+  network_mode: host
   ports:
    - "10050:10050"
   volumes:
