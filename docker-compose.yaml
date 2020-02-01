@@ -1,6 +1,7 @@
 version: '3.5'
 services:
  zabbix-server:
+  container_name: ZBX-SERVER
   image: zabbix/zabbix-server-mysql:centos-4.4-latest
   ports:
    - "10051:10051"
@@ -118,6 +119,7 @@ services:
  #  com.zabbix.os: "centos"
 
  zabbix-web-apache-mysql:
+  container_name: ZBX-MYSQL
   image: zabbix/zabbix-web-apache-mysql:centos-4.4-latest
   ports:
    - "80:80"
@@ -173,6 +175,7 @@ services:
    com.zabbix.os: "centos"
 
  zabbix-agent:
+  container_name: ZBX-AGENT
   image: zabbix/zabbix-agent:centos-4.4-latest
   ports:
    - "10050:10050"
