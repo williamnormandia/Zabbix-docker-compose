@@ -203,12 +203,6 @@ services:
   user: root
   privileged: true
   pid: "host"
-  networks:
-   zbx_net_backend:
-    aliases:
-     - zabbix-agent
-     - zabbix-agent-passive
-     - zabbix-agent-centos
   stop_grace_period: 5s
   labels:
    com.zabbix.description: "Zabbix agent"
