@@ -177,7 +177,6 @@ services:
  zabbix-agent:
   container_name: ZBX-AGENT
   image: zabbix/zabbix-agent:centos-4.4-latest
-  network_mode: host
   ports:
    - "10050:10050"
   volumes:
@@ -187,6 +186,8 @@ services:
    - ./zbx_env/var/lib/zabbix/modules:/var/lib/zabbix/modules:ro
    - ./zbx_env/var/lib/zabbix/enc:/var/lib/zabbix/enc:ro
    - ./zbx_env/var/lib/zabbix/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+  links:
+   - zabbix-server:zabbix-server
   deploy:
    resources:
     limits:
@@ -201,6 +202,12 @@ services:
   user: root
   privileged: true
   pid: "host"
+  networks:
+   zbx_net_backend:
+     aliases:
+      - zabbix-agent
+      - zabbix-agent-passive
+      - zabbix-agent-centos
   stop_grace_period: 5s
   labels:
    com.zabbix.description: "Zabbix agent"
